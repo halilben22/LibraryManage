@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .register {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+
+.back {
+    background: none;
+    border: none;
+}
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h2>User Registration</h2>
+<form class="register" th:action="@{register-user}" method="get">
+    <label for="firstname">First Name: <input  type="text" id="firstname" name="firstname" required/></label><br/>
+    <label for="lastname">Last Name: <input type="text" id="lastname" name="lastname" required/></label><br/>
+    <label for="username">Username: <input type="text"  id="username" name="username" required/></label><br/>
+    <label for="password">Password: <input type="password" id="password"  name="password" required/></label><br/>
+    <label for="role">Role: <input type="text" id="role"  name="role" required/></label><br/>
+    <button type="submit">Register</button>
+
+
+</form>
+
+<form class="back" th:action="@{login}" method="get">
+    <button type="submit">Back</button>
+</form>
+
+</body>
+</html>

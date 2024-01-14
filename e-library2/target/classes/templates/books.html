@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        td {
+            color: #555;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a th:href="@{/books/books}">Tüm Kitaplar</a></li>
+        <li><a th:href="@{/users/login}">Log Out</a></li>
+    </ul>
+</nav>
+<h2>Book List</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Stock</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="book : ${books}">
+        <td th:text="${book.bookName}"></td>
+        <td th:text="${book.bookStock}"></td>
+        <td>
+
+            <form th:action="@{'/details/detail_book/' + ${book.Id}}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+
+
+        </td>
+
+        <td>
+
+            <form th:action="@{'/owned/open-borrow-page/' + ${book.bookName}}" method="get">
+                <button type="submit">Kitabı ödünç al</button>
+            </form>
+        </td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+</body>
+</html>

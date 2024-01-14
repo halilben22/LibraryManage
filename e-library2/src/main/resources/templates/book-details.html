@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yazar Listesi</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <ul>
+        <li><a th:href="@{/books/books}">Tüm Kitaplar</a></li>
+        <li><a th:href="@{/users/login}">Log Out</a></li>
+    </ul>
+</nav>
+
+<h1 th:text="${book.bookName}"></h1>
+<h1>Yazar Listesi</h1>
+<ul>
+    <li th:each="author : ${authors}">
+        <span th:text="${author.name}"></span>
+        <span th:text="${author.surname}"></span>
+    </li>
+</ul>
+</body>
+</html>
